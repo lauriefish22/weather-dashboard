@@ -21,58 +21,56 @@
     </header>
     <!-- Entire Page -->
     <section class="container">
-        <div class="row">
-            <!-- top/left column -->
-            <div id="input-content" class="col-md-3 bg-light">
-                <form>
-                    <label for="Search City">Search for a City</label>
-                    <div class="input-row">
-                        <input type="text" id="search-city" class="form-control" placeholder="city">
-                        <button class="btn btn-outline-secondary" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                            </svg>
-                        </button>
-                        </input>
-                    </div>
-                </form>
-                <ul id="previous-cities" class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action active">
-                        Test
+
+        <!-- top/left column -->
+        <div id="input-content" class="col-12 col-md-3 bg-light">
+            <form>
+                <label for="Search City">Search for a City</label>
+                <div class="input-row">
+                    <input type="text" id="search-city" class="form-control" placeholder="city">
+                    <button class="btn btn-outline-secondary" id="input-button" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
                     </button>
-                </ul>
-                <button id="clear" class="input-group-append">Clear</button>
-            </div> <!-- top/right column -->
-            <div id="content-right" class="col-md-9 pt-4">
-                <div class="row mr-0">
-                    <div class="col-lg-11" id="today-weather">
-                        <div class="card-body">
-                            <h2 id="city-name" class="city-name align-middle">Name</h2>
-                            <img id="current-pic" alt="">
-                            <p id="temp"></p>
-                            <p id="humidity"></p>
-                            <p id="wind"></p>
+                    </input>
+                </div>
+            </form>
+            <ul id="previous-cities" class="list-group">
+                <button id="old-inputs" type="button" class="list-group-item list-group-item-action active">
+                    Test
+                </button>
+            </ul>
+            <button id="clear" class="input-group-append">Clear</button>
+            <form id="history"></form>
+        </div>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="five-day-box">
-                    <div class="col-12">
-                        <h3>5-Day Forecast</h3>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-2 forecast bg-primary"></div>
-                    <div class="col-md-2 forecast bg-primary"></div>
-                    <div class="col-md-2 forecast bg-primary"></div>
-                    <div class="col-md-2 forecast bg-primary"></div>
-                    <div class="col-md-2 forecast bg-primary"></div>
-                </div>
+        <!-- top/right column -->
+        <div id="content-right" class="col-12 col-md-9 pt-4">
+            <div class="card-body" id="todays-weather">
+                <h2 id="city-name" class="city-name align-middle">Name</h2>
+                <img id="current-pic" alt="">
+                <p id="temp"></p>
+                <p id="humidity"></p>
+                <p id="wind"></p>
             </div>
         </div>
+
+        <div class="row col-12" id="five-day-box">
+            <h3>5-Day Forecast</h3>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 forecast bg-primary"></div>
+            <div class="col-md-2 forecast bg-primary"></div>
+            <div class="col-md-2 forecast bg-primary"></div>
+            <div class="col-md-2 forecast bg-primary"></div>
+            <div class="col-md-2 forecast bg-primary"></div>
+        </div>
+
 
     </section>
 
