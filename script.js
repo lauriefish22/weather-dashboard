@@ -17,7 +17,7 @@ var historyEl = document.getElementById('history');
 
 
 function getCurrentWeather(city) {
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIkey;
+    let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIkey;
 
     $.ajax({
         url: queryURL,
@@ -33,7 +33,20 @@ function getCurrentWeather(city) {
 
     });
 }
+function getFiveDayForecast(event) {
+    let newCity = city.value;
+    let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIkey;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        let forecastBox = document.querySelectorAll(".five-day-box");
+        for (i = 0; i < forecastBox.length; i++) {
+            forecastBox[i].innerHTML = "";
 
+        }
+    })
+}
 
 
 
