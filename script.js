@@ -4,7 +4,7 @@ var inputButton = document.getElementById('input-button');
 var currentTempEl = document.getElementById('temp');
 var currentWindEl = document.getElementById('wind');
 var currentHumidity = document.getElementById('humidity');
-var city = "";
+var city = document.getElementById("search-city");
 var date = dayjs().format('dddd MMMM D YYYY   h:mm: a');
 
 var showOldEntries = document.getElementById('old-inputs');
@@ -32,7 +32,11 @@ function getCurrentWeather(event) {
 
     });
     $("#input-button").on("click", (event) => {
-        city = $("#search-city").val();
+        newCity = city.value;
+        var searchCity = $("#old-inputs")
+        searchCity.attr('id', newCity)
+        searchCity.text(newCity)
+        searchCity.addClass("h4")
 
     });
 
