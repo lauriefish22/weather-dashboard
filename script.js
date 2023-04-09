@@ -42,10 +42,10 @@ $("#input-button").on("click", (event) => {
     let newCity = city.value;
     console.log(newCity);
     getCurrentWeather(newCity);
-    //var searchCity = $("#old-inputs")
-    // searchCity.attr('id', newCity)
-    // searchCity.text(newCity)
-    // searchCity.addClass("h4")
+    var searchCity = $("#old-inputs")
+    searchCity.attr('id', newCity)
+    searchCity.text(newCity)
+    searchCity.addClass("h4")
 });
 //getCurrentWeather();
 
