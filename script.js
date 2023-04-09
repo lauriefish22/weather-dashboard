@@ -5,6 +5,7 @@ var currentTempEl = document.getElementById('temp');
 var currentWindEl = document.getElementById('wind');
 var currentHumidity = document.getElementById('humidity');
 var city = document.getElementById("search-city");
+
 var date = dayjs().format('dddd MMMM D YYYY   h:mm: a');
 
 var showOldEntries = document.getElementById('old-inputs');
@@ -15,7 +16,7 @@ var historyEl = document.getElementById('history');
 
 
 
-function getCurrentWeather(event) {
+function getCurrentWeather(city) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIkey;
 
     $.ajax({
@@ -31,19 +32,22 @@ function getCurrentWeather(event) {
         $("#temp").text("Temperature (F) " + response.main.temp);
 
     });
-    $("#input-button").on("click", (event) => {
-        newCity = city.value;
-        var searchCity = $("#old-inputs")
-        searchCity.attr('id', newCity)
-        searchCity.text(newCity)
-        searchCity.addClass("h4")
-
-    });
-
-
-
 }
-getCurrentWeather();
+
+
+
+
+
+$("#input-button").on("click", (event) => {
+    let newCity = city.value;
+    console.log(newCity);
+    getCurrentWeather(newCity);
+    //var searchCity = $("#old-inputs")
+    // searchCity.attr('id', newCity)
+    // searchCity.text(newCity)
+    // searchCity.addClass("h4")
+});
+//getCurrentWeather();
 
 
 
