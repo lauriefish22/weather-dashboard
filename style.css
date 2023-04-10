@@ -4,21 +4,24 @@ h4 {
 }
 
 
-#five-day-box {
+.forecast {
     margin-bottom: 10px;
     margin-right: 10px;
     height: 250px;
     display: flex;
     flex-wrap: wrap;
     
-    width: 80%;
+    
     
 }
 #right-side {
+    margin-top: 120px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    
     flex-direction: column;
+    width: 100%;
+    margin-right: 10px;
 }
 
 

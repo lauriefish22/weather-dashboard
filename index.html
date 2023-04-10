@@ -20,60 +20,60 @@
         </div>
     </header>
     <!-- Entire Page -->
-    <main class="container" id="all-content">
-        <div class="row" id="top-row">
+    <main class="container-fluid" id="all-content">
+        <!-- <div class="row" id="top-row"> -->
 
-            <!-- top/left column -->
-            <div id="left-side" class="col-md-4 bg-light">
+        <!-- top/left column -->
+        <div id="left-side" class="col-md-3 bg-light">
 
-                <form>
-                    <label for="Search City">Search for a City</label>
-                    <div class="input-row">
-                        <input type="text" id="search-city" class="form-control" placeholder="city">
-                        <button class="btn btn-outline-secondary" id="input-button" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                            </svg>
-                        </button>
-                        </input>
-                    </div>
-                </form>
-                <ul id="previous-cities" class="list-group">
-                    <button id="old-inputs" type="button" class="list-group-item list-group-item-action active">
-                        Test
+            <form>
+                <label for="Search City">Search for a City</label>
+                <div class="input-row">
+                    <input type="text" id="search-city" class="form-control" placeholder="city">
+                    <button class="btn btn-outline-secondary" id="input-button" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
                     </button>
-                </ul>
-                <button id="clear" class="input-group-append">Clear</button>
-                <form id="history"></form>
-            </div>
-
-
-
-            <!-- top/right column -->
-            <div id="content-right" class="col-md-8">
-                <div class="row mr-0">
-                    <div class="col-md-11 card m-3" id="todays-weather">
-                        <h2 id="city-name" class="city-name align-middle">Name</h2>
-                        <img id="current-pic" alt="">
-                        <p id="temp"></p>
-                        <p id="humidity"></p>
-                        <p id="wind"></p>
-                    </div>
+                    </input>
                 </div>
+            </form>
+            <ul id="previous-cities" class="list-group">
+                <button id="old-inputs" type="button" class="list-group-item list-group-item-action active">
+                    Test
+                </button>
+            </ul>
+            <button id="clear" class="input-group-append">Clear</button>
+            <form id="history"></form>
+        </div>
 
-                <div id="right-side">
-                    <h3>5-Day Forecast</h3>
-                    <div class="row">
-                        <div class="col-md-2 forecast bg-primary" id="five-day-box"></div>
-                        <div class="col-md-2 forecast bg-primary" id="five-day-box"></div>
-                        <div class="col-md-2 forecast bg-primary" id="five-day-box"></div>
-                        <div class="col-md-2 forecast bg-primary" id="five-day-box"></div>
-                        <div class="col-md-2 forecast bg-primary" id="five-day-box"></div>
-                    </div>
+
+
+        <!-- top/right column -->
+        <div id="content-right" class="col-md-9">
+            <div class="row mr-0">
+                <div class="col-md-11 card m-3" id="todays-weather">
+                    <h2 id="city-name" class="city-name align-middle">Name</h2>
+                    <img id="current-pic" alt="">
+                    <p id="temp"></p>
+                    <p id="humidity"></p>
+                    <p id="wind"></p>
                 </div>
             </div>
+
+            <div id="right-side">
+                <h3>5-Day Forecast</h3>
+                <div class="row">
+                    <div class="col-md-2 forecast bg-primary" id="five-day-one"></div>
+                    <div class="col-md-2 forecast bg-primary" id="five-day-two"></div>
+                    <div class="col-md-2 forecast bg-primary" id="five-day-three"></div>
+                    <div class="col-md-2 forecast bg-primary" id="five-day-four"></div>
+                    <div class="col-md-2 forecast bg-primary" id="five-day-five"></div>
+                </div>
+            </div>
+
     </main>
 
 
@@ -89,6 +89,7 @@
 
     <script src=" https://code.jquery.com/jquery-3.4.1.min.js">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./script.js"></script>
 </body>
 
