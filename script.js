@@ -5,7 +5,6 @@ var currentTempEl = document.getElementById('temp');
 var currentWindEl = document.getElementById('wind');
 var currentHumidity = document.getElementById('humidity');
 var city = document.getElementById("search-city");
-//var city = "portland";
 var date = dayjs().format('dddd MMMM D YYYY   h:mm: a');
 
 var showOldEntries = document.getElementById('old-inputs');
@@ -34,14 +33,21 @@ function printPreviousCities() {
         cityButton.value = "" + localStorage.key(i);
         newListItem.append(cityButton);
         listEl.append(newListItem);
-        $(cityButton).on("click", (event) => {
-        });
+        if (localStorage.length > 0) {
+            $("#clear").html($('<a id="clear" href="#">clear</a>'));
+
+        } else {
+            $("#clear").html("");
+        }
     }
 }
 function clearStorage() {
     let currentListEl = document.getElementById('previous-cities').children;
     for (let i = 0; i < currentListEl.length; i++) {
+
+
         document.getElementById('previous-cities').removeChild(currentListEl[i]);
+        $('#previous-cities').empty();
     }
     localStorage.clear();
 }
@@ -70,15 +76,14 @@ function getCurrentWeather() {
 function addCity(newCity) {
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial&appid=" + APIkey;
 
-    // var searchCity = $(("<li></li>"));
-    // searchCity.attr('id', newCity);
-    // searchCity.text(newCity);
-    // searchCity.addClass("h4");
-    // $("#previous-cities").append(searchCity);
+    var searchCity = $(("<li></li>"));
+    searchCity.attr('id', newCity);
+    searchCity.text(newCity);
+    searchCity.addClass("h4");
+    $("#previous-cities").append(searchCity);
     localStorage.setItem(newCity, queryURL);
-
-
 }
+
 function getFiveDayForecast(event) {
     let newCity = city.value;
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial&appid=" + APIkey;
@@ -151,7 +156,6 @@ function getFiveDayForecast(event) {
 
 
 $("#input-button").on("click", (event) => {
-    console.log("in the search event");
     event.preventDefault();
     let newCity = city.value;
     addCity(newCity);
@@ -159,8 +163,12 @@ $("#input-button").on("click", (event) => {
     getCurrentWeather();
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial&appid=" + APIkey;
     getFiveDayForecast();
-
 });
+
+$("#clear").on("click", (event) => {
+    clearStorage();
+});
+
 printPreviousCities();
 
 
