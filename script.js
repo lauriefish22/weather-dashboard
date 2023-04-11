@@ -7,7 +7,7 @@ var currentHumidity = document.getElementById('humidity');
 var city = document.getElementById("search-city");
 //var city = "portland";
 var date = dayjs().format('dddd MMMM D YYYY   h:mm: a');
-let stringList = JSON.parse(localStorage.getItem("stringList")) || [];
+
 var showOldEntries = document.getElementById('old-inputs');
 var historyEl = document.getElementById('history');
 
@@ -18,8 +18,33 @@ var handleErrors = (response) => {
     }
     return response;
 }
+// clearing printed list
+function printPreviousCities() {
 
+    let currentListEl = document.getElementsByClassName('list-city');
+    for (let i = 0; i < currentListEl.length; i++) {
+        document.getElementById('previous-cities').removeChild(currentListEl[i]);
+    }
 
+    for (let i = 0; i < localStorage.length; i++) {
+        let cityButton = document.createElement('button');
+        let listEl = document.getElementById("previous-cities");
+        listEl.className = 'list-city';
+        let newListItem = document.createElement('li');
+        cityButton.value = "" + localStorage.key(i);
+        newListItem.append(cityButton);
+        listEl.append(newListItem);
+        $(cityButton).on("click", (event) => {
+        });
+    }
+}
+function clearStorage() {
+    let currentListEl = document.getElementById('previous-cities').children;
+    for (let i = 0; i < currentListEl.length; i++) {
+        document.getElementById('previous-cities').removeChild(currentListEl[i]);
+    }
+    localStorage.clear();
+}
 
 
 function getCurrentWeather() {
@@ -40,14 +65,18 @@ function getCurrentWeather() {
             $("#temp").text("Temperature (F) " + response.main.temp);
 
         });
+
 }
-function addCity() {
-    let newCity = city.value;
-    var searchCity = $("<li></li>");
-    searchCity.attr('id', newCity)
-    searchCity.text(newCity)
-    searchCity.addClass("h4")
-    $("#previous-cities").append(searchCity);
+function addCity(newCity) {
+    let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial&appid=" + APIkey;
+
+    // var searchCity = $(("<li></li>"));
+    // searchCity.attr('id', newCity);
+    // searchCity.text(newCity);
+    // searchCity.addClass("h4");
+    // $("#previous-cities").append(searchCity);
+    localStorage.setItem(newCity, queryURL);
+
 
 }
 function getFiveDayForecast(event) {
@@ -70,55 +99,69 @@ function getFiveDayForecast(event) {
                 let timeZoneOffset = response.city.timezone;
                 let timeZoneOffsetHours = timeZoneOffset / 60 / 60;
                 let thisMoment = moment.unix(dayTimeUTC).utc().utcOffset(timeZoneOffsetHours);
-
-                //console.log(thisMoment);
+                let weatherIcon = "https://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png";
+                let htmlString = "";
                 if (thisMoment.format("HH:mm:ss") === "11:00:00" || thisMoment.format("HH:mm:ss") === "12:00:00" || thisMoment.format("HH:mm:ss") === "13:00:00") {
                     switch (dayNumber) {
                         case 0:
-
-                            let htmlString = 'Temperature ' + response.list[i].main.temp;
-
-                            htmlString += '      Wind Speed ' + response.list[i].wind.speed;
+                            htmlString = 'Temperature ' + response.list[i].main.temp;
+                            htmlString += 'Wind Speed ' + response.list[i].wind.speed;
                             htmlString += 'Humidity ' + response.list[i].main.humidity;
-                            htmlString += response.list[i].weatherIcon;
-
-
-
-                            // htmlString += 'Wind Speed' + response.list[i].wind.speed;
-                            // htmlString += 'Humidity' + response.list[i].main.humidity;
-                            // htmlString += response.list[i].weather.icon;
-
+                            htmlString += '<img src=' + weatherIcon + '></img>';
                             document.getElementById("five-day-one").innerHTML = htmlString;
+                            dayNumber++;
+                            break;
+                        case 1:
+                            htmlString = 'Temperature ' + response.list[i].main.temp;
+                            htmlString += 'Wind Speed ' + response.list[i].wind.speed;
+                            htmlString += 'Humidity ' + response.list[i].main.humidity;
+                            htmlString += '<img src=' + weatherIcon + '></img>';
+                            document.getElementById("five-day-two").innerHTML = htmlString;
+                            dayNumber++;
+                            break;
+                        case 2:
+                            htmlString = 'Temperature ' + response.list[i].main.temp;
+                            htmlString += 'Wind Speed ' + response.list[i].wind.speed;
+                            htmlString += 'Humidity ' + response.list[i].main.humidity;
+                            htmlString += '<img src=' + weatherIcon + '></img>';
+                            document.getElementById("five-day-three").innerHTML = htmlString;
+                            dayNumber++;
+                            break;
+                        case 3:
+                            htmlString = 'Temperature ' + response.list[i].main.temp;
+                            htmlString += 'Wind Speed ' + response.list[i].wind.speed;
+                            htmlString += 'Humidity ' + response.list[i].main.humidity;
+                            htmlString += '<img src=' + weatherIcon + '></img>';
+                            document.getElementById("five-day-four").innerHTML = htmlString;
+                            dayNumber++;
+                            break;
+                        case 4:
+                            htmlString = 'Temperature ' + response.list[i].main.temp;
+                            htmlString += 'Wind Speed ' + response.list[i].wind.speed;
+                            htmlString += 'Humidity ' + response.list[i].main.humidity;
+                            htmlString += '<img src=' + weatherIcon + '></img>';
+                            document.getElementById("five-day-five").innerHTML = htmlString;
+                            dayNumber++;
+                            break;
                     }
                 }
             }
-        })
+        });
 }
 
 
 $("#input-button").on("click", (event) => {
+    console.log("in the search event");
+    event.preventDefault();
     let newCity = city.value;
+    addCity(newCity);
     console.log(newCity);
-
     getCurrentWeather();
-
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial&appid=" + APIkey;
-
-    // let searchCity = $("#old-inputs")
-    // searchCity.attr('id', newCity)
-    // searchCity.text(newCity)
-    // searchCity.addClass("h4")
-    // $("#list-group").append(searchCity);
-    localStorage.setItem(newCity, queryURL);
-
-
     getFiveDayForecast();
-    addCity();
+
 });
-
-
-
-
+printPreviousCities();
 
 
 
