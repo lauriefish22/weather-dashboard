@@ -1,8 +1,8 @@
-# weather-dashboard
+# WEATHER DASHBOARD
 
 
--[Live Site]()
--[Github]()
+-[Live Site](https://lauriefish22.github.io/weather-dashboard/)
+-[Github](https://github.com/lauriefish22/weather-dashboard)
 
 ## SITE SCREENSHOT
 ![assets](./Assets/Screenshot%202023-04-10%20at%2010.36.25%20PM.png)
