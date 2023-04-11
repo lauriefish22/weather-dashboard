@@ -27,7 +27,7 @@
         <div id="left-side" class="col-md-3 bg-light">
 
 
-            <label for="Search City">Search for a City</label>
+            <label id="search-title" for="Search City">Search for a City</label>
             <div class="input-row">
                 <input type="text" id="search-city" class="form-control" placeholder="city">
                 <button class="btn btn-outline-secondary" id="input-button" type="button">
@@ -53,7 +53,7 @@
         <div id="content-right" class="col-md-9">
             <div class="row mr-0">
                 <div class="col-md-11 card m-3" id="todays-weather">
-                    <h2 id="city-name" class="city-name align-middle">Name</h2>
+                    <h2 id="city-name" class="city-name align-middle"></h2>
                     <img id="current-pic" alt="">
                     <p id="temp"></p>
                     <p id="humidity"></p>
@@ -63,7 +63,7 @@
 
             <div id="right-side">
                 <h3>5-Day Forecast</h3>
-                <div class="row">
+                <div class="row" id="font">
                     <div class="col-md-2 forecast bg-primary" id="five-day-one"></div>
                     <div class="col-md-2 forecast bg-primary" id="five-day-two"></div>
                     <div class="col-md-2 forecast bg-primary" id="five-day-three"></div>

@@ -24,7 +24,7 @@ function printPreviousCities() {
     for (let i = 0; i < currentListEl.length; i++) {
         document.getElementById('previous-cities').removeChild(currentListEl[i]);
     }
-
+    //setting up local storage and clearing after button click
     for (let i = 0; i < localStorage.length; i++) {
         let cityButton = document.createElement('button');
         let listEl = document.getElementById("previous-cities");
@@ -44,8 +44,6 @@ function printPreviousCities() {
 function clearStorage() {
     let currentListEl = document.getElementById('previous-cities').children;
     for (let i = 0; i < currentListEl.length; i++) {
-
-
         document.getElementById('previous-cities').removeChild(currentListEl[i]);
         $('#previous-cities').empty();
     }
@@ -69,21 +67,20 @@ function getCurrentWeather() {
             $("#wind").html("<p>Wind Speed: " + response.wind.speed + "</p>");
             $("#humidity").text("Humidity: " + response.main.humidity);
             $("#temp").text("Temperature (F) " + response.main.temp);
-
         });
-
 }
+//appending new cities to the list
 function addCity(newCity) {
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial&appid=" + APIkey;
 
     var searchCity = $(("<li></li>"));
     searchCity.attr('id', newCity);
     searchCity.text(newCity);
-    searchCity.addClass("h4");
+    searchCity.addClass("h2");
     $("#previous-cities").append(searchCity);
     localStorage.setItem(newCity, queryURL);
 }
-
+//grabbing parameters from API to be used for 5 day forecast
 function getFiveDayForecast(event) {
     let newCity = city.value;
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial&appid=" + APIkey;
@@ -154,7 +151,7 @@ function getFiveDayForecast(event) {
         });
 }
 
-
+//event listener to show the current weather
 $("#input-button").on("click", (event) => {
     event.preventDefault();
     let newCity = city.value;
@@ -164,7 +161,7 @@ $("#input-button").on("click", (event) => {
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial&appid=" + APIkey;
     getFiveDayForecast();
 });
-
+//clearing storage
 $("#clear").on("click", (event) => {
     clearStorage();
 });

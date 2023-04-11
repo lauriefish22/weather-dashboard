@@ -1,38 +1,58 @@
-h4 {
+h2 {
     color: black;
-    
+    font-size: 32px;
 }
-
-
+p {
+    font-size: 22px;
+}
+#search-title {
+    font-size: 30px;
+    margin-top: 10px;
+}
+#search-city {
+    border-style: solid;
+    border-color: black;
+    width: 50%;
+}
+#input-button {
+    background-color: lightblue;
+}
+#clear {
+    font-size: 26px;
+}
 .forecast {
     margin-bottom: 10px;
     margin-right: 10px;
     height: 250px;
     display: flex;
     flex-wrap: wrap;
-    font-size: 18px;;
-    
-    
-    
+    font-size: 18px;
 }
+img {
+    width: 50%;
+}
+#font {
+    font-size: 16px;
+}
+
 #right-side {
     margin-top: 120px;
     display: flex;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap;    
     flex-direction: column;
     width: 100%;
     margin-right: 10px;
 }
 
-
 main {
     display: flex;
     flex-wrap: wrap;
 }
+
 #old-inputs {
     width: 40%;
 }
+
 #top-row {
     display: flex;
     flex-wrap: wrap;

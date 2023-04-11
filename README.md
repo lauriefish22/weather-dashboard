@@ -5,31 +5,34 @@
 -[Github]()
 
 ## SITE SCREENSHOT
-![assets]()
+![assets](./Assets/Screenshot%202023-04-10%20at%2010.36.25%20PM.png)
 
 ## TECHNOLOGY USED
--[HTML](https://www.w3schools.com/js/js_htmldom_navigation.asp)
+-[BOOTSTRAP](https://getbootstrap.com/docs/4.0/components/input-group/)
 -[JQUERY](https://www.w3schools.com/jquery/)
 -[DAYJS](https://day.js.org/docs/en/display/format)
+Open Weather API
 
 ## DESCRIPTION
-My objective was to create a planner for a work day that is broken down by the hour.  The color of each time slot will be different depending on if the hour is current or in the future with the time slots in the past disappearing after the time has passed.  The user will be able to write in tasks and these tasks will be saved to local storage. 
+My objective was to create a weather dashboard displaying the current conditions as well as the five day forecast for a chosen city.  I used Jquery, Bootstrap and a 3rd party API to show this. 
 
 ## LEARNING POINTS
-This project incorporated dayjs as well as jquery.  Both are great tools to make things connect easily as well as providing pre-made code.  This was also a great opportunity to continue practicing using local storage as well as a different way to use event listeners within jquery. 
+This project was a great way to start getting used to using API's and realize all of the information and possibilities they hold.  It was a challenge but that always means a bigger celebration at the end!
 
 
 
 ## CODE EXAMPLE
-This is a great example of using jquery to grab DOM elements through traversing.
+An example of what I thought to be the trickiest part.  Getting parameters to spread across the five day forecast elements.
 
-```$('.saveBtn').on('click', function () {
-  console.log(this);
-  var text = $(this).siblings('.description').val();
-  var time = $(this).parent().attr('id');
-
-  localStorage.setItem(time, text);
-});```
+```switch (dayNumber) 
+        case 0:
+            htmlString = 'Temperature ' + response.list[i].main.temp;
+            htmlString += 'Wind Speed ' + response.list[i].wind.speed;
+            htmlString += 'Humidity ' + response.list[i].main.humidity;
+            htmlString += '<img src=' + weatherIcon + '></img>';
+            document.getElementById("five-day-one").innerHTML = htmlString;
+            dayNumber++;
+            break;```
 
 
  
